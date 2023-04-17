@@ -64,6 +64,7 @@ def main():
             try:
                 transcript = recognizer.recognize_google(audio)
                 if transcript.lower == "genius":
+                    
                     # Record audio
                     filename = "input.wav"
                     print("Say your question ...")
