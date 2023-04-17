@@ -30,6 +30,7 @@ engine.runAndWait()
 You can find more on the [pyttsx3 GitHub page](https://github.com/nateshmbhat/pyttsx3)
 
 ## References
+
 * [YouTube - Create a ChatGPT Voice Assistant in 8 Minutes (Python Tutorial)](https://www.youtube.com/watch?v=8z8Cobsvc9k)
 * [OpenAI API reference](https://platform.openai.com/docs/api-reference/introduction)
 * [Pypi.org - pyttsx3 2.90](https://pypi.org/project/pyttsx3/)
