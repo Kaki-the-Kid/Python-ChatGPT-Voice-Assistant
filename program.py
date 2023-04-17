@@ -1,10 +1,21 @@
+import os
+from dotenv import load_dotenv
 import openai
 import pyttsx3
 import speech_recognition as sr
 import time
+import keyboard
 
 # Set you OpenAI API key
-openai.api_key="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"
+# Never commit your key to your repository
+# openai.api_key="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"
+load_dotenv()
+openai.api_key = os.getenv("API_KEY")
+# alternatively, you can set the API key as an environment variable
+# secrets = dotenv_values(".env")
+
+# Otherwise, you can set the API key as an environment variable
+# https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety
 
 # Initialize the text-to-speech engine
 engine = pyttsx3.init()
@@ -44,16 +55,20 @@ def main():
         print("Say Genius to start recording ...")
         
         with sr.Microphone() as source:
-            recognizer = sr.Recognizer()
-            audio = recognizer.listen(source)
+            while keyboard.is_pressed('q') is False or audio is None:
+                recognizer = sr.Recognizer()
+                audio = recognizer.listen(source)
+                print("Recording ...")
+                time.sleep(0.5)
+
             try:
                 transcript = recognizer.recognize_google(audio)
                 if transcript.lower == "genius":
                     # Record audio
                     filename = "input.wav"
-                    print("Recording ...")
+                    print("Say your question ...")
                     
-                    with open("recording.wav", "wb") as source:
+                    with sr.Microphone() as source:
                         recognizer.adjust_for_ambient_noise(source)
                         source.pause_threshold = 1
                         audio = recognizer.listen(source, phrase_time_limit=None, timeout=None)
@@ -61,16 +76,22 @@ def main():
                         with open(filename, "wb") as f:
                             f.write(audio.get_wav_data())
                             print("Done recording")
-                            
+
                     # Transcribe audio to text
                     text = transcribe_audio_to_text(filename)
                     if text:
                         print("Transcription: " + text)
                         
-                    # Generate response using GPT-3
+                        # Generate response using GPT-3
+                        response = generate_response(text)
+                        print("GPT-3 Response: {response}")
                     
-                    
-            except:
-                print("There was an error recording the audio")
+                        # Read response aloud using text-to-speech
+                        speak_text(response)
                         
-            
+            except Exception as e:
+                print("There was an error {}".format(e))
+
+
+if __name__ == "__main__":
+    main()
