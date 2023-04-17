@@ -55,11 +55,8 @@ def main():
         print("Say Genius to start recording ...")
         
         with sr.Microphone() as source:
-            while keyboard.is_pressed('q') is False or audio is None:
-                recognizer = sr.Recognizer()
-                audio = recognizer.listen(source)
-                print("Recording ...")
-                time.sleep(0.5)
+            recognizer = sr.Recognizer()
+            audio = recognizer.listen(source)
 
             try:
                 transcript = recognizer.recognize_google(audio)
