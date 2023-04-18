@@ -20,13 +20,18 @@ engine = pyttsx3.init()
 
 def transcribe_audio_to_text(filename):
     recognizer = sr.Recognizer()
-    
+
     with sr.AudioFile(filename) as source:
         audio = recognizer.record(source)
-    try:  
-        return recognizer.recognize_google(audio)
-    except:
-        print("There was an error transcribing the audio to text")
+
+        try:  
+            return recognizer.recognize_google(
+                                            audio,
+                                            language="da-DK"
+                                        )
+        except:
+            print("There was an error transcribing the audio to text")
+            return None
     
 def generate_response(prompt):
     response = openai.Completion.create(
@@ -44,7 +49,9 @@ def generate_response(prompt):
     return response["choices"][0]["text"]
 
 def speak_text(text):
-    engine.say(text)
+    engine.say(
+        text
+        )
     engine.runAndWait()
     
 def main():
@@ -61,7 +68,7 @@ def main():
                                                     audio,
                                                     language="da-DK"
                                                     )
-                if transcript.lower is "genius":
+                if transcript.lower() == "genius":
                     
                     # Record audio
                     filename = "input.wav"
@@ -70,7 +77,11 @@ def main():
                     with sr.Microphone() as source:
                         recognizer.adjust_for_ambient_noise(source)
                         source.pause_threshold = 1
-                        audio = recognizer.listen(source, phrase_time_limit=None, timeout=None)
+                        audio = recognizer.listen(
+                                                source, 
+                                                phrase_time_limit=None, 
+                                                timeout=None
+                                            )
                         
                         with open(filename, "wb") as f:
                             f.write(audio.get_wav_data())
@@ -89,7 +100,7 @@ def main():
                         speak_text(response)
         
                 else:
-                    print("The transcript was: {}".format(transcript))
+                    print("The transcript was: {}".format(transcript.lower()))
                         
                         
             except Exception as e:
