@@ -59,8 +59,11 @@ def main():
             audio = recognizer.listen(source)
 
             try:
-                transcript = recognizer.recognize_google(audio)
-                if transcript.lower == "genius":
+                transcript = recognizer.recognize_google(
+                                                    audio,
+                                                    language="da-DK"
+                                                    )
+                if transcript.lower is "genius":
                     
                     # Record audio
                     filename = "input.wav"
@@ -86,6 +89,10 @@ def main():
                     
                         # Read response aloud using text-to-speech
                         speak_text(response)
+        
+                else:
+                    print("The transcript was: {}".format(transcript))
+                        
                         
             except Exception as e:
                 print("There was an error {}".format(e))
