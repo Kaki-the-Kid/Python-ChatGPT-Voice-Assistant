@@ -33,6 +33,16 @@ You can find more on the [pyttsx3 GitHub page](https://github.com/nateshmbhat/py
 
     pip install SpeechRecognition
 
+## Making the program speak danish
+[TODO]
+* https://polygon.io/dashboard/api-keys/9cb778f0-a448-4871-b0a3-6af073fe67bb
+* https://github.com/fnielsen/awesome-danish
+* chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/http://www.imm.dtu.dk/~faan/ps/Nielsen2016Danish.pdf
+* https://spacy.io/models/da or https://spacy.io/models
+* spaCy Library Architecture - https://spacy.io/api
+* https://melaniewalsh.github.io/Intro-Cultural-Analytics/05-Text-Analysis/Multilingual/Danish/03-POS-Keywords-Danish.html
+* https://www.resemble.ai/danish-tts/
+
 ## References
 
 * [YouTube - Create a ChatGPT Voice Assistant in 8 Minutes (Python Tutorial)](https://www.youtube.com/watch?v=8z8Cobsvc9k)
