@@ -20,7 +20,15 @@ A simple Python voice assistant project that demonstrates text-to-speech, speech
 
     pip install -r requirements.txt
 
-3. Set your OpenAI API key:
+3. Create a local `.env` file from the example and add your API key:
+
+    cp .env.example .env
+
+4. Update `.env` with your key:
+
+    OPENAI_API_KEY="your_api_key_here"
+
+   Or set the environment variable directly:
 
     export OPENAI_API_KEY="your_api_key_here"
 

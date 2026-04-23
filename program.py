@@ -6,14 +6,15 @@ import speech_recognition as sr
 import time
 import keyboard
 
-# Set you OpenAI API key
-# Never commit your key to your repository
+# Load environment variables from .env file, if present.
+# Never commit real secrets to version control.
 load_dotenv()
-# alternatively, you can set the API key as an environment variable
-# secrets = dotenv_values(".env")
-
-# Otherwise, you can set the API key as an environment variable
-# https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety
+openai_api_key = os.getenv("OPENAI_API_KEY")
+if not openai_api_key:
+    raise RuntimeError(
+        "OPENAI_API_KEY is not set. Create a .env file or export the variable."
+    )
+openai.api_key = openai_api_key
 
 # Initialize the text-to-speech engine
 engine = pyttsx3.init()
