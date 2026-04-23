@@ -1,25 +1,52 @@
 # ChatGPT Voice Assistant made with Python
 
-I have come to love the tool tha AI assisted coding delivers. It doesn´t remove the need for knowing how to code. But the help from the AI expands the help functions we are come to expext from Intellicense in the diffenrent IDEs.
+A simple Python voice assistant project that demonstrates text-to-speech, speech recognition, and OpenAI integration.
+
+## Requirements
+
+- Python 3.8 or newer
+- `openai`
+- `pyttsx3`
+- `SpeechRecognition`
+
+## Installation
+
+1. Create and activate a virtual environment:
+
+    python -m venv .venv
+    source .venv/bin/activate
+
+2. Install dependencies:
+
+    pip install -r requirements.txt
+
+3. Set your OpenAI API key:
+
+    export OPENAI_API_KEY="your_api_key_here"
+
+## Usage
+
+Run the main program:
+
+    python program.py
 
 ## Libraries and dependencies
 
 ### OpenAI API
 
-Først install OpenAI API - pref. in a virtuel environment
+Install the OpenAI client:
 
     pip install openai
 
-You canb get API ket free for personal use at: [OpenAI - API keys](https://platform.openai.com/account/api-keys)
+Get an API key at: [OpenAI - API keys](https://platform.openai.com/account/api-keys)
 
 ### pyttsx3
 
-From pypi.org:
-pyttsx3 is a text-to-speech conversion library in Python. Unlike alternative libraries, it works offline, and is compatible with both Python 2 and 3.
+`pyttsx3` is a text-to-speech library that works offline and supports Python 2 and 3.
 
     pip install pyttsx3
 
-An example of using pyttsx3
+Example:
 
 ```python
 import pyttsx3
@@ -27,24 +54,22 @@ engine = pyttsx3.init()
 engine.say("I will speak this text")
 engine.runAndWait()
 ```
-You can find more on the [pyttsx3 GitHub page](https://github.com/nateshmbhat/pyttsx3)
 
-## Install Speech Recognition
+More info: [pyttsx3 GitHub page](https://github.com/nateshmbhat/pyttsx3)
+
+### SpeechRecognition
+
+Install SpeechRecognition:
 
     pip install SpeechRecognition
 
-## Making the program speak danish
-[TODO]
-* https://polygon.io/dashboard/api-keys/9cb778f0-a448-4871-b0a3-6af073fe67bb
-* https://github.com/fnielsen/awesome-danish
-* chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/http://www.imm.dtu.dk/~faan/ps/Nielsen2016Danish.pdf
-* https://spacy.io/models/da or https://spacy.io/models
-* spaCy Library Architecture - https://spacy.io/api
-* https://melaniewalsh.github.io/Intro-Cultural-Analytics/05-Text-Analysis/Multilingual/Danish/03-POS-Keywords-Danish.html
-* https://www.resemble.ai/danish-tts/
+## Notes
+
+- Danish speech support is a work in progress.
+- This project is intended as a starter template for voice-enabled ChatGPT integration.
 
 ## References
 
 * [YouTube - Create a ChatGPT Voice Assistant in 8 Minutes (Python Tutorial)](https://www.youtube.com/watch?v=8z8Cobsvc9k)
 * [OpenAI API reference](https://platform.openai.com/docs/api-reference/introduction)
-* [Pypi.org - pyttsx3 2.90](https://pypi.org/project/pyttsx3/)
+* [Pypi.org - pyttsx3](https://pypi.org/project/pyttsx3/)
